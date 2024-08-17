@@ -65,15 +65,15 @@ const modifier = (text) => {
   }
 
   if (!state.oracle) {
-    state.oracle = { frontMemory: '', action: 0 }
+    state.oracle = { frontMemory: '', actionCount: 1 }
   }
 
-  if (state.oracle.action === info.actionCount) {
+  if (state.oracle.actionCount === info.actionCount) {
     state.memory.frontMemory = state.oracle.frontMemory
   } else {
     state.oracle.frontMemory = main(DEFAULT_CHANCE_FOR_SUCCESS)
     state.memory.frontMemory = state.oracle.frontMemory
-    state.oracle.action = info.actionCount
+    state.oracle.actionCount = info.actionCount
   }
 
   return { text }
